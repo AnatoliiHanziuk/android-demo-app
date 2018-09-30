@@ -21,8 +21,7 @@ public class DriverTests extends BaseTest {
 
     @Test
     public void testCanSearchDriver() throws InterruptedException {
-        mainPage
-                .searchDriver(INPUT_SEARCH_TEXT, DRIVER_TO_BE_FOUND, activityTestRule)
+        mainPage.searchDriver(INPUT_SEARCH_TEXT, DRIVER_TO_BE_FOUND, activityTestRule)
                 .shouldBeFound(DRIVER_TO_BE_FOUND)
                 .callToDriver();
     }
