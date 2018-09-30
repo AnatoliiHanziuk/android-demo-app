@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true">
+    <appender name="STDOUT" class="ch.qos.logback.classic.android.LogcatAppender">
+        <encoder>
+            <charset>utf-8</charset>
+            <Pattern>%d{HH:mm:ss.SSS} %-5level - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.mytaxi.android_demo.pages" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+</configuration>
