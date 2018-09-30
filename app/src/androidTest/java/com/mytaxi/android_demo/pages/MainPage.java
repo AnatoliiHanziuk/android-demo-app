@@ -37,8 +37,6 @@ public class MainPage implements BasePage {
                                           ActivityTestRule<MainActivity> mainActivityRule) throws InterruptedException {
         MainActivity currentActivity = mainActivityRule.getActivity();
         clearSearch();
-        // need to wait until mHttpClient.fetchDrivers() in MainActivity class will finish it's work
-        Thread.sleep(1000);
 
         LOG.info("Type {} to driver search textbox", searchInput);
         onView(withId(SEARCH_TEXT_ID))
