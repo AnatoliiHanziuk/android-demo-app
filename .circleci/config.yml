@@ -38,7 +38,7 @@ jobs:
           name: Run UI tests
           command: ./gradlew app:connectedAndroidTest
       - store_artifacts:
-          path: app/build/reports/ui
+          path: app/build/reports
           destination:  reports
       - store_test_results:
-          path: app/build/ui
+          path: app/build/reports
