@@ -1,6 +1,7 @@
 package com.mytaxi.android_demo.pages;
 
 import com.mytaxi.android_demo.R;
+import com.mytaxi.android_demo.exceptions.PageNotOpenException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,11 @@ public class DriverDetailsPage implements BasePage {
     private static final int CALL_BUTTON_ID = R.id.fab;
 
     public DriverDetailsPage() {
-        isPageOpen();
+        try {
+            isPageOpen();
+        } catch (PageNotOpenException e) {
+            e.printStackTrace();
+        }
     }
 
     public void callToDriver() {
@@ -34,13 +39,12 @@ public class DriverDetailsPage implements BasePage {
     }
 
     @Override
-    public boolean isPageOpen() {
+    public void isPageOpen() throws PageNotOpenException {
         try {
             isElementDisplayed(withId(DRIVER_NAME_ID));
             LOG.info("Driver details page is open");
-            return true;
         } catch (Exception exception) {
-            return false;
+            throw new PageNotOpenException("Driver details page is not opened");
         }
     }
 }

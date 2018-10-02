@@ -1,6 +1,7 @@
 package com.mytaxi.android_demo.pages;
 
 import com.mytaxi.android_demo.R;
+import com.mytaxi.android_demo.exceptions.PageNotOpenException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,11 @@ public class LoginPage implements BasePage {
     private static final int LOGIN_BUTTON_ID = R.id.btn_login;
 
     public LoginPage() {
-        isPageOpen();
+        try {
+            isPageOpen();
+        } catch (PageNotOpenException e) {
+            e.printStackTrace();
+        }
     }
 
     public MainPage login(String userName, String password) {
@@ -32,15 +37,14 @@ public class LoginPage implements BasePage {
     }
 
     @Override
-    public boolean isPageOpen() {
+    public void isPageOpen() throws PageNotOpenException {
         try {
             isElementDisplayed(withId(USER_NAME_FIELD_ID));
             isElementDisplayed(withId(USER_PASSWORD_FIELD_ID));
             isElementDisplayed(withId(LOGIN_BUTTON_ID));
             LOG.info("Login page is open");
-            return true;
         } catch (Exception exception) {
-            return false;
+            throw new PageNotOpenException("Login Page is not opened");
         }
     }
 }
