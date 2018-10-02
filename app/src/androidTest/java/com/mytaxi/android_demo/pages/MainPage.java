@@ -6,7 +6,6 @@ import android.support.test.rule.ActivityTestRule;
 
 import com.mytaxi.android_demo.R;
 import com.mytaxi.android_demo.activities.MainActivity;
-import com.mytaxi.android_demo.exceptions.PageNotOpenException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,20 +21,15 @@ import static com.mytaxi.android_demo.utils.AssertionUtils.isElementDisplayed;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
-public class MainPage implements BasePage {
+public class MainPage implements Page {
     private static final Logger LOG = LoggerFactory.getLogger(MainPage.class);
 
     private static final int SEARCH_CONTAINER_ID = R.id.searchContainer;
     private static final int SEARCH_TEXT_ID = R.id.textSearch;
     private static final int ACTIVITY_MENU_CHOICE_ID = R.id.drawer_layout;
 
-    public MainPage()  {
-        try {
-            isPageOpen();
-        } catch (PageNotOpenException e) {
-            e.printStackTrace();
-        }
-
+    public MainPage() {
+        this.isPageOpen();
     }
 
     public DriverDetailsPage searchDriver(String searchInput,
@@ -73,12 +67,14 @@ public class MainPage implements BasePage {
     }
 
     @Override
-    public void isPageOpen() throws PageNotOpenException {
+    public boolean isPageOpen() {
         try {
             isElementDisplayed(withId(SEARCH_CONTAINER_ID));
             LOG.info("Main page is open");
+            return true;
         } catch (Exception exception) {
-            throw new PageNotOpenException("Main page is not open");
+            LOG.info("Main page is NOT opened");
+            return false;
         }
     }
 }

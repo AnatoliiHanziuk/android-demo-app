@@ -1,7 +1,6 @@
 package com.mytaxi.android_demo.pages;
 
 import com.mytaxi.android_demo.R;
-import com.mytaxi.android_demo.exceptions.PageNotOpenException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,18 +12,14 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.mytaxi.android_demo.utils.AssertionUtils.isElementDisplayed;
 
-public class DriverDetailsPage implements BasePage {
+public class DriverDetailsPage implements Page {
     private static final Logger LOG = LoggerFactory.getLogger(DriverDetailsPage.class);
 
     private static final int DRIVER_NAME_ID = R.id.textViewDriverName;
     private static final int CALL_BUTTON_ID = R.id.fab;
 
     public DriverDetailsPage() {
-        try {
-            isPageOpen();
-        } catch (PageNotOpenException e) {
-            e.printStackTrace();
-        }
+        this.isPageOpen();
     }
 
     public void callToDriver() {
@@ -39,12 +34,14 @@ public class DriverDetailsPage implements BasePage {
     }
 
     @Override
-    public void isPageOpen() throws PageNotOpenException {
+    public boolean isPageOpen() {
         try {
             isElementDisplayed(withId(DRIVER_NAME_ID));
             LOG.info("Driver details page is open");
+            return true;
         } catch (Exception exception) {
-            throw new PageNotOpenException("Driver details page is not opened");
+            LOG.info("Driver details page is NOT opened");
+            return false;
         }
     }
 }

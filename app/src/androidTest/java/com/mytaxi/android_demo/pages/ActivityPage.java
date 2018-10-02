@@ -1,7 +1,6 @@
 package com.mytaxi.android_demo.pages;
 
 import com.mytaxi.android_demo.R;
-import com.mytaxi.android_demo.exceptions.PageNotOpenException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +12,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.mytaxi.android_demo.utils.AssertionUtils.isElementDisplayed;
 
-public class ActivityPage implements BasePage {
+public class ActivityPage implements Page {
     private static final Logger LOG = LoggerFactory.getLogger(ActivityPage.class);
 
     private static final int ACTIVITY_VIEW_ID = R.id.nav_view;
@@ -21,11 +20,7 @@ public class ActivityPage implements BasePage {
     private static final String LOGOUT_BUTTON_NAME = "Logout";
 
     public ActivityPage() {
-        try {
-            isPageOpen();
-        } catch (PageNotOpenException e) {
-            e.printStackTrace();
-        }
+        this.isPageOpen();
     }
 
     public LoginPage logout() {
@@ -41,12 +36,14 @@ public class ActivityPage implements BasePage {
     }
 
     @Override
-    public void isPageOpen() throws PageNotOpenException {
+    public boolean isPageOpen() {
         try {
             isElementDisplayed(withId(ACTIVITY_VIEW_ID));
             LOG.info("Activity menu is open");
+            return true;
         } catch (Exception exception) {
-            throw new PageNotOpenException("Activity page is not opened");
+            LOG.info("Activity page is NOT opened");
+            return false;
         }
     }
 }

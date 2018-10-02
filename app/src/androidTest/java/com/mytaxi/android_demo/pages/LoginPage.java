@@ -1,7 +1,6 @@
 package com.mytaxi.android_demo.pages;
 
 import com.mytaxi.android_demo.R;
-import com.mytaxi.android_demo.exceptions.PageNotOpenException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +11,7 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static com.mytaxi.android_demo.utils.AssertionUtils.isElementDisplayed;
 
-public class LoginPage implements BasePage {
+public class LoginPage implements Page {
     private static final Logger LOG = LoggerFactory.getLogger(LoginPage.class);
 
     private static final int USER_NAME_FIELD_ID = R.id.edt_username;
@@ -20,11 +19,7 @@ public class LoginPage implements BasePage {
     private static final int LOGIN_BUTTON_ID = R.id.btn_login;
 
     public LoginPage() {
-        try {
-            isPageOpen();
-        } catch (PageNotOpenException e) {
-            e.printStackTrace();
-        }
+        this.isPageOpen();
     }
 
     public MainPage login(String userName, String password) {
@@ -37,14 +32,16 @@ public class LoginPage implements BasePage {
     }
 
     @Override
-    public void isPageOpen() throws PageNotOpenException {
+    public boolean isPageOpen() {
         try {
             isElementDisplayed(withId(USER_NAME_FIELD_ID));
             isElementDisplayed(withId(USER_PASSWORD_FIELD_ID));
             isElementDisplayed(withId(LOGIN_BUTTON_ID));
             LOG.info("Login page is open");
+            return true;
         } catch (Exception exception) {
-            throw new PageNotOpenException("Login Page is not opened");
+            LOG.info("Login page is NOT opened");
+            return false;
         }
     }
 }
