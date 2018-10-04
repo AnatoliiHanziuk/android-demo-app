@@ -1,6 +1,8 @@
 package com.mytaxi.android_demo.tests;
 
 import android.support.test.runner.AndroidJUnit4;
+import com.mytaxi.android_demo.pages.LoginPage;
+import com.mytaxi.android_demo.pages.MainPage;
 
 import org.junit.Before;
 import org.junit.Test;
