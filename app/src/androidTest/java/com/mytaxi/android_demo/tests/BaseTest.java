@@ -4,8 +4,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.rule.GrantPermissionRule;
 
 import com.mytaxi.android_demo.activities.MainActivity;
-import com.mytaxi.android_demo.pages.LoginPage;
-import com.mytaxi.android_demo.pages.MainPage;
 
 import org.junit.Rule;
 
