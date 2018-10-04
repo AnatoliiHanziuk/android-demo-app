@@ -11,9 +11,6 @@ import org.junit.Rule;
 
 public class BaseTest {
 
-    LoginPage loginPage = new LoginPage();
-    MainPage mainPage = new MainPage();
-
     static final String USER_NAME = "crazydog335";
     static final String PASSWORD = "venture";
 
