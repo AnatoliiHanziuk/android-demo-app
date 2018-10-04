@@ -18,10 +18,6 @@ public class LoginPage implements Page {
     private static final int USER_PASSWORD_FIELD_ID = R.id.edt_password;
     private static final int LOGIN_BUTTON_ID = R.id.btn_login;
 
-    public LoginPage() {
-        this.isPageOpen();
-    }
-
     public MainPage login(String userName, String password) {
         LOG.info("Logging in a user with name {} and password {}", userName, password);
         onView(withId(USER_NAME_FIELD_ID)).perform(typeText(userName));
@@ -31,7 +27,7 @@ public class LoginPage implements Page {
         return new MainPage();
     }
 
-    @Override
+   @Override
     public boolean isPageOpen() {
         try {
             isElementDisplayed(withId(USER_NAME_FIELD_ID));

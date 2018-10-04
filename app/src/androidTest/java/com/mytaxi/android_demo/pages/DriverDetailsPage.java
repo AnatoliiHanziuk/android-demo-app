@@ -18,10 +18,6 @@ public class DriverDetailsPage implements Page {
     private static final int DRIVER_NAME_ID = R.id.textViewDriverName;
     private static final int CALL_BUTTON_ID = R.id.fab;
 
-    public DriverDetailsPage() {
-        this.isPageOpen();
-    }
-
     public void callToDriver() {
         LOG.info("Call to driver");
         onView(withId(CALL_BUTTON_ID)).perform(click());

@@ -28,10 +28,6 @@ public class MainPage implements Page {
     private static final int SEARCH_TEXT_ID = R.id.textSearch;
     private static final int ACTIVITY_MENU_CHOICE_ID = R.id.drawer_layout;
 
-    public MainPage() {
-        this.isPageOpen();
-    }
-
     public DriverDetailsPage searchDriver(String searchInput,
                                           String driverFullName,
                                           ActivityTestRule<MainActivity> mainActivityRule) throws InterruptedException {

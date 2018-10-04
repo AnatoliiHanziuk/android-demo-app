@@ -19,9 +19,6 @@ public class ActivityPage implements Page {
     private static final int USER_NAME_ID = R.id.nav_username;
     private static final String LOGOUT_BUTTON_NAME = "Logout";
 
-    public ActivityPage() {
-        this.isPageOpen();
-    }
 
     public LoginPage logout() {
         LOG.info("Logging out");
