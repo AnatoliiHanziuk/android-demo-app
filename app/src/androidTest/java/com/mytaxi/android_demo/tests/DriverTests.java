@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class DriverTests extends BaseTest {
 
-    private MainPage mainPage;
+    private MainPage mainPage = new MainPage();
 
     private static final String INPUT_SEARCH_TEXT = "sa";
     private static final String DRIVER_TO_BE_FOUND = "Sarah Scott";
@@ -21,8 +21,6 @@ public class DriverTests extends BaseTest {
         if (!mainPage.isPageOpen()) {
             LoginPage loginPage = new LoginPage();
             mainPage = loginPage.login(USER_NAME, PASSWORD);
-        } else {
-            mainPage = new MainPage();
         }
     }
 

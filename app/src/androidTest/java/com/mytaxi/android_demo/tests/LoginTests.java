@@ -11,15 +11,13 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class LoginTests extends BaseTest {
     
-    private LoginPage loginPage;
+    private LoginPage loginPage = new LoginPage();
 
     @Before
     public void logoutIfLoggedIn() {
         MainPage mainPage = new MainPage();
         if (mainPage.isPageOpen()) {
             mainPage.navigateToActivityChoice().logout();
-        } else {
-            loginPage = new LoginPage();
         }
     }
 
