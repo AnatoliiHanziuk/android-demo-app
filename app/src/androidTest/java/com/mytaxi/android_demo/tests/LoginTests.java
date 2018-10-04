@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 public class LoginTests extends BaseTest {
+    
+    private LoginPage loginPage = new LoginPage();
+    private MainPage mainPage = new MainPage();
 
     @Before
     public void logoutIfLoggedIn() {
