@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 public class DriverTests extends BaseTest {
+    
+    private LoginPage loginPage = new LoginPage();
+    private MainPage mainPage = new MainPage();
 
     private static final String INPUT_SEARCH_TEXT = "sa";
     private static final String DRIVER_TO_BE_FOUND = "Sarah Scott";
